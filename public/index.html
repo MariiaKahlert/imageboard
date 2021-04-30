@@ -8,9 +8,16 @@
 <body>
     <h1>Image board</h1>
     <div id="main">
+        <form>
+            <input v-model="title" type="text" name="title" placeholder="title">
+            <input v-model="description" type="text" name="description" placeholder="description">
+            <input v-model="username" type="text" name="username" placeholder="username">
+            <input @change="handleChange" type="file" name="file" accept="image/*">
+            <button @click.prevent="submitFile">Submit</button>
+        </form>
         <div class="card" v-for="image in images" v-bind:key="image.id">
             <img v-bind:src="image.url" alt="image">
-            <span>{{image.title}}</span>
+            <span>{{ image.title }}</span>
         </div>
     </div>
     <script src="/js/vue.js"></script>
