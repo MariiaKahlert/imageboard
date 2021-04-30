@@ -47,12 +47,9 @@ app.post("/upload", uploader.single("file"), upload, (req, res) => {
         const fullUrl = s3Url + filename;
         insertImage(title, description, username, fullUrl)
             .then((result) => {
-                console.log(result.rows);
+                res.json(result.rows[0]);
             })
             .catch((err) => console.log(err));
-        // res.json({
-        //     success: true,
-        // });
     } else {
         res.json({
             success: false,

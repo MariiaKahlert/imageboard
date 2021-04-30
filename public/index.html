@@ -15,9 +15,11 @@
             <input @change="handleChange" type="file" name="file" accept="image/*">
             <button @click.prevent="submitFile">Submit</button>
         </form>
-        <div class="card" v-for="image in images" v-bind:key="image.id">
-            <img v-bind:src="image.url" alt="image">
-            <span>{{ image.title }}</span>
+        <div class="grid-container">
+            <div class="card" v-for="image in images" v-bind:key="image.id">
+                <img v-bind:src="image.url" alt="image">
+                <span>{{ image.title }}</span>
+            </div>
         </div>
     </div>
     <script src="/js/vue.js"></script>

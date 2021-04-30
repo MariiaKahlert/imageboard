@@ -6,7 +6,7 @@ body {
     margin: 0;
 }
 
-#main {
+.grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 10px;
@@ -30,13 +30,13 @@ body {
 }
 
 @media screen and (min-width: 480px) and (max-width: 800px) {
-    #main {
+    .grid-container {
         grid-template-columns: 1fr 1fr;
     }
 }
 
 @media screen and (max-width: 480px) {
-    #main {
+    .grid-container {
         grid-template-columns: 1fr;
     }
 }

@@ -18,7 +18,6 @@ new Vue({
             this.file = e.target.files[0];
         },
         submitFile: function () {
-            console.log("submitFile is running");
             var formData = new FormData();
             formData.append("file", this.file);
             formData.append("title", this.title);
@@ -26,7 +25,9 @@ new Vue({
             formData.append("username", this.username);
             axios
                 .post("/upload", formData)
-                .then(() => {})
+                .then((response) => {
+                    this.images.unshift(response.data);
+                })
                 .catch((err) => console.log(err));
         },
     },

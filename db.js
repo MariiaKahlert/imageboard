@@ -13,7 +13,7 @@ module.exports.selectAllImages = () => {
 module.exports.insertImage = (title, description, username, url) => {
     return db.query(
         `
-            INSERT INTO images
+            INSERT INTO images (title, description, username, url)
             VALUES ($1, $2, $3, $4)
             RETURNING *
         `,
