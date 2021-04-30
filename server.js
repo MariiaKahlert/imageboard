@@ -1,14 +1,14 @@
 const { selectAllImages } = require("./db");
+const { upload } = require("./s3");
+const multer = require("multer");
+const uidSafe = require("uid-safe");
+const path = require("path");
 const express = require("express");
 const app = express();
 
 app.use(express.static("public"));
 
 // Beginning of the code required to upload files
-
-const multer = require("multer");
-const uidSafe = require("uid-safe");
-const path = require("path");
 
 const diskStorage = multer.diskStorage({
     destination: function (req, file, callback) {
@@ -38,7 +38,7 @@ app.use("/images", (req, res) => {
         .catch((err) => console.log(err));
 });
 
-app.post("/upload", uploader.single("file"), (req, res) => {
+app.post("/upload", uploader.single("file"), upload, (req, res) => {
     console.log("Upload worked!");
     console.log(req.body); // text inputs
     console.log(req.file); // file
