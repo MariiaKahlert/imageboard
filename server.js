@@ -1,8 +1,9 @@
-const { selectAllImages } = require("./db");
+const { selectAllImages, insertImage } = require("./db");
 const { upload } = require("./s3");
 const multer = require("multer");
 const uidSafe = require("uid-safe");
 const path = require("path");
+const { s3Url } = require("./config.json");
 const express = require("express");
 const app = express();
 
@@ -40,13 +41,18 @@ app.use("/images", (req, res) => {
 
 app.post("/upload", uploader.single("file"), upload, (req, res) => {
     console.log("Upload worked!");
-    console.log(req.body); // text inputs
-    console.log(req.file); // file
     if (req.file) {
-        // send back a response to Vue using res.json
-        res.json({
-            success: true,
-        });
+        const { title, description, username } = req.body;
+        const { filename } = req.file;
+        const fullUrl = s3Url + filename;
+        insertImage(title, description, username, fullUrl)
+            .then((result) => {
+                console.log(result.rows);
+            })
+            .catch((err) => console.log(err));
+        // res.json({
+        //     success: true,
+        // });
     } else {
         res.json({
             success: false,

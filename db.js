@@ -9,3 +9,14 @@ module.exports.selectAllImages = () => {
         `
     );
 };
+
+module.exports.insertImage = (title, description, username, url) => {
+    return db.query(
+        `
+            INSERT INTO images
+            VALUES ($1, $2, $3, $4)
+            RETURNING *
+        `,
+        [title, description, username, url]
+    );
+};
