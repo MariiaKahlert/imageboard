@@ -12,6 +12,12 @@ h1 {
     text-align: center;
 }
 
+#main {
+    width: 100vw;
+    display: flex;
+    justify-content: center;
+}
+
 .form-container {
     align-items: center;
     justify-content: center;
@@ -95,6 +101,7 @@ label:hover {
     grid-template-columns: repeat(3, 1fr);
     gap: 20px;
     padding: 15px;
+    max-width: 1000px;
 }
 
 .card {

@@ -16,6 +16,7 @@ new Vue({
     methods: {
         handleChange: function (e) {
             console.log("handleChange is running");
+            // console.log(e.target.files[0]);
             this.file = e.target.files[0];
         },
         submitFile: function () {
@@ -29,6 +30,10 @@ new Vue({
                 .then((response) => {
                     this.images.unshift(response.data);
                     this.showForm = false;
+                    this.description = "";
+                    this.username = "";
+                    this.title = "";
+                    this.file = null;
                 })
                 .catch((err) => console.log(err));
         },

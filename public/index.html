@@ -36,7 +36,9 @@
                             id="file"
                             accept="image/*"
                         />
-                        <label for="file">Choose a file</label>
+                        <label for="file"
+                            >{{ file?.name || "Choose a file" }}</label
+                        >
                         <button class="btn-submit" @click.prevent="submitFile">
                             Submit
                         </button>
