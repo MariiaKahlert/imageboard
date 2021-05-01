@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Image Board</title>
+        <title>Mood Board</title>
         <meta name="viewport" content="width=device-width, initial=1" />
         <link rel="stylesheet" href="/style.css" />
     </head>
     <body>
-        <h1>Image board</h1>
+        <h1>MOOD BOARD</h1>
         <div id="main">
             <div class="grid-container">
                 <div class="form-container card">
@@ -46,8 +46,16 @@
                     </div>
                 </div>
                 <div class="card" v-for="image in images" v-bind:key="image.id">
+                    <div class="overlay">
+                        <span>{{ image.description }}</span>
+                    </div>
                     <img v-bind:src="image.url" alt="image" />
-                    <span>{{ image.title }}</span>
+                    <div class="card-text">
+                        <span style="font-weight: bold">{{ image.title }}</span>
+                        <span style="font-weight: light; color: #949494"
+                            >{{ image.username }}</span
+                        >
+                    </div>
                 </div>
             </div>
         </div>
