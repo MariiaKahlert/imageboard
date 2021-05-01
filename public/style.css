@@ -6,21 +6,98 @@ body {
     margin: 0;
 }
 
+.form-container {
+    align-items: center;
+    justify-content: center;
+}
+
+form {
+    height: 80%;
+    width: 70%;
+    max-width: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+input[type="text" i] {
+    outline: none;
+    border: none;
+    border-bottom: 1.5px solid #949494;
+    height: 30px;
+    font-size: 15px;
+}
+
+input[type="text" i]:focus {
+    border-bottom-color: #d3394c;
+}
+
+input[type="file" i] {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
+}
+
+label,
+.btn-submit {
+    color: #d3394c;
+    border: 1.5px solid currentColor;
+    font-size: 15px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    padding: 10px;
+    transition-duration: 0.2s;
+    border-radius: 20px;
+    text-align: center;
+}
+
+label:hover {
+    color: #722040;
+}
+
+.btn-submit {
+    color: #f1e5e6;
+    background-color: #d3394c;
+    border: none;
+}
+
+.btn-submit:hover {
+    background-color: #722040;
+}
+
+.btn-add-image {
+    font-size: 150px;
+    color: #d2d2d2;
+    background: none;
+    border: none;
+    transition-duration: 0.2s;
+    cursor: pointer;
+}
+
+.btn-add-image:hover {
+    color: #d3394c;
+}
+
 .grid-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
+    gap: 20px;
     padding: 15px;
 }
 
 .card {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
-    height: 300px;
-    border: 1px solid black;
-    padding: 5px;
-    border-radius: 5px;
+    height: 400px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px 0 rgb(0 0 0 / 35%);
+    overflow: hidden;
 }
 
 .card img {

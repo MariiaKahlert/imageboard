@@ -6,6 +6,7 @@ new Vue({
         username: "",
         title: "",
         file: null,
+        showForm: false,
     },
     mounted: function () {
         axios.get("/images").then((response) => {
@@ -27,6 +28,7 @@ new Vue({
                 .post("/upload", formData)
                 .then((response) => {
                     this.images.unshift(response.data);
+                    this.showForm = false;
                 })
                 .catch((err) => console.log(err));
         },
