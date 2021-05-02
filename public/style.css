@@ -8,28 +8,48 @@ body {
         Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
-h1 {
+.text-center {
     text-align: center;
 }
 
-#main {
-    width: 100vw;
+/* Flexbox */
+
+.flex {
     display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.justify-center {
     justify-content: center;
 }
 
-.form-container {
-    align-items: center;
-    justify-content: center;
+.justify-evenly {
+    justify-content: space-evenly;
 }
+
+.align-center {
+    align-items: center;
+}
+
+/* Grid */
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 15px;
+    max-width: 1000px;
+}
+
+/* Form */
 
 form {
     height: 80%;
     width: 70%;
     max-width: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
 }
 
 input[type="text" i] {
@@ -83,7 +103,9 @@ label:hover {
     background-color: #722040;
 }
 
-.btn-add-image {
+/* Plus button */
+
+.btn-plus {
     font-size: 150px;
     color: #d2d2d2;
     background: none;
@@ -92,17 +114,11 @@ label:hover {
     cursor: pointer;
 }
 
-.btn-add-image:hover {
+.btn-plus:hover {
     color: #d3394c;
 }
 
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    padding: 15px;
-    max-width: 1000px;
-}
+/* Card */
 
 .card {
     display: flex;
@@ -121,12 +137,9 @@ label:hover {
     background-color: rgba(0, 0, 0, 0.5);
     opacity: 0;
     transition-duration: 0.2s;
-    display: flex;
-    align-items: center;
-    text-align: center;
-    justify-content: center;
     padding: 20px;
     color: white;
+    cursor: zoom-in;
 }
 
 .overlay:hover {
@@ -140,10 +153,7 @@ label:hover {
 }
 
 .card-text {
-    display: flex;
-    flex-direction: column;
     flex-grow: 1;
-    justify-content: space-evenly;
     padding: 7px 18px;
 }
 
@@ -152,6 +162,53 @@ label:hover {
     white-space: nowrap;
     text-overflow: ellipsis;
 }
+
+.btn-cancel {
+    background: none;
+    border: none;
+    color: #949494;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+
+.btn-cancel:hover {
+    color: #d3394c;
+}
+
+/* Card flip */
+
+.scene {
+    height: 400px;
+    width: 100%;
+    perspective: 600px;
+    z-index: 1;
+}
+
+.scene .flip-card {
+    transition: transform 1s;
+    transform-style: preserve-3d;
+    overflow: visible;
+}
+
+.card-face {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+    background-color: white;
+    overflow: hidden;
+    border-radius: 20px;
+}
+
+.card-face-back {
+    transform: rotateY(180deg);
+}
+
+.scene .flip-card.is-flipped {
+    transform: rotateY(180deg);
+}
+
+/* Responsiveness */
 
 @media screen and (min-width: 480px) and (max-width: 800px) {
     .grid-container {

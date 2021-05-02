@@ -6,53 +6,80 @@
         <link rel="stylesheet" href="/style.css" />
     </head>
     <body>
-        <h1>MOOD BOARD</h1>
-        <div id="main">
+        <h1 class="text-center">MOOD BOARD</h1>
+        <div id="main" class="flex justify-center" style="width: 100vw">
             <div class="grid-container">
-                <div class="form-container card">
-                    <form v-if="showForm">
-                        <input
-                            v-model="title"
-                            type="text"
-                            name="title"
-                            placeholder="title"
-                        />
-                        <input
-                            v-model="description"
-                            type="text"
-                            name="description"
-                            placeholder="description"
-                        />
-                        <input
-                            v-model="username"
-                            type="text"
-                            name="username"
-                            placeholder="username"
-                        />
-                        <input
-                            @change="handleChange"
-                            type="file"
-                            name="file"
-                            id="file"
-                            accept="image/*"
-                        />
-                        <label for="file"
-                            >{{ file?.name || "Choose a file" }}</label
+                <div class="scene">
+                    <div
+                        class="card flip-card form-container"
+                        v-bind:class="{ 'is-flipped': showForm }"
+                    >
+                        <div
+                            class="card-face card-face-front flex flex-column align-center justify-center"
                         >
-                        <button class="btn-submit" @click.prevent="submitFile">
-                            Submit
-                        </button>
-                    </form>
-                    <div class="add-image" v-else @click="showForm = true">
-                        <button class="btn-add-image">+</button>
+                            <button class="btn-plus" @click="showForm = true">
+                                +
+                            </button>
+                        </div>
+                        <div
+                            class="card-face card-face-back flex flex-column align-center justify-center"
+                        >
+                            <form class="flex flex-column justify-evenly">
+                                <input
+                                    v-model="title"
+                                    type="text"
+                                    name="title"
+                                    placeholder="title"
+                                />
+                                <input
+                                    v-model="description"
+                                    type="text"
+                                    name="description"
+                                    placeholder="description"
+                                />
+                                <input
+                                    v-model="username"
+                                    type="text"
+                                    name="username"
+                                    placeholder="username"
+                                />
+                                <input
+                                    @change="handleChange"
+                                    type="file"
+                                    name="file"
+                                    id="file"
+                                    accept="image/*"
+                                />
+                                <label for="file"
+                                    >{{ file?.name || "Choose a file" }}</label
+                                >
+                                <button
+                                    class="btn-submit"
+                                    type="submit"
+                                    @click.prevent="submitFile"
+                                >
+                                    Submit
+                                </button>
+                            </form>
+                            <button
+                                class="btn-cancel"
+                                type="button"
+                                @click="showForm = false"
+                            >
+                                Cancel
+                            </button>
+                        </div>
                     </div>
                 </div>
+
                 <div class="card" v-for="image in images" v-bind:key="image.id">
-                    <div class="overlay">
+                    <div
+                        class="overlay flex align-center justify-center text-center"
+                    >
                         <span>{{ image.description }}</span>
                     </div>
                     <img v-bind:src="image.url" alt="image" />
-                    <div class="card-text">
+                    <div class="card-text flex flex-column justify-evenly">
                         <span style="font-weight: bold">{{ image.title }}</span>
                         <span style="font-weight: light; color: #949494"
                             >{{ image.username }}</span
