@@ -19,7 +19,9 @@
                     this.title = response.data.title;
                     this.url = response.data.url;
                     this.username = response.data.username;
-                    this.created_at = response.data.created_at;
+                    this.created_at = new Date(response.data.created_at)
+                        .toUTCString()
+                        .replace("GMT", "");
                 })
                 .catch((err) => console.log(err));
         },

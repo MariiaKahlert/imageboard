@@ -110,8 +110,8 @@
                     <span @click="closeModal" style="position: absolute; top: 15px; right: 20px; cursor: pointer">X</span>
                     <div class="flex flex-column justify-between" style="padding: 50px 20px 15px; height: 100%">
                         <div>
-                            <p v-if="username" style="margin-top: 0">Uploaded by <strong>{{ username }}</strong> on {{ created_at }}</p>
-                            <p v-else style="margin-top: 0">Uploaded on {{ created_at }}</p>
+                            <p v-if="username" style="margin-top: 0">Uploaded by <strong>{{ username }}</strong> <br/> <span style="color: #d2d2d2">{{ created_at }}</span></p>
+                            <p v-else style="margin-top: 0; color: #d2d2d2">Uploaded on {{ created_at }}</p>
                             <h2 v-if="title">{{ title }}</h2>
                             <p v-if="description">{{ description }}</p>
                         </div>
