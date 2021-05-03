@@ -74,6 +74,7 @@
 
                 <div class="card" v-for="image in images" v-bind:key="image.id">
                     <div
+                        @click="toggleImage(image.id)"
                         class="overlay flex align-center justify-center text-center"
                     >
                         <span>{{ image.description }}</span>
@@ -87,7 +88,21 @@
                     </div>
                 </div>
             </div>
+            <!-- Modal -->
+            <modal-component
+                v-bind:image-id="imageId"
+                v-if="imageId"
+                @close="closeModal"
+            ></modal-component>
         </div>
+        <script id="modal-template" type="text/x-template">
+            <div class="flex modal-container">
+                <div style="width: 33%"></div>
+                <div style="width: 67%; position: relative;">
+                    <span @click="closeModal" style="position: absolute; top: 15px; right: 20px; cursor: pointer">X</span>
+                </div>
+            </div>
+        </script>
         <script src="/js/vue.js"></script>
         <script src="/js/axios.min.js"></script>
         <script src="/js/script.js"></script>

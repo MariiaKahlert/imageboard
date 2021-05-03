@@ -1,9 +1,11 @@
 const { selectAllImages, insertImage } = require("./db");
 const { upload } = require("./s3");
+const { s3Url } = require("./config.json");
+
 const multer = require("multer");
 const uidSafe = require("uid-safe");
 const path = require("path");
-const { s3Url } = require("./config.json");
+
 const express = require("express");
 const app = express();
 
@@ -40,7 +42,6 @@ app.use("/images", (req, res) => {
 });
 
 app.post("/upload", uploader.single("file"), upload, (req, res) => {
-    console.log("Upload worked!");
     if (req.file) {
         const { title, description, username } = req.body;
         const { filename } = req.file;

@@ -42,6 +42,20 @@ body {
     gap: 20px;
     padding: 15px;
     max-width: 1000px;
+    position: relative;
+}
+
+/* Modal  */
+
+.modal-container {
+    width: 820px;
+    position: absolute;
+    height: 70vh;
+    z-index: 2;
+    background-color: white;
+    top: 20vh;
+    border-radius: 20px;
+    border: 1px solid black;
 }
 
 /* Form */
