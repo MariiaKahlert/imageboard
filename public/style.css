@@ -74,7 +74,7 @@ body {
 }
 
 .x-span:hover {
-    color: #d3394c;
+    color: #e60023;
 }
 
 /* Large overlay */
@@ -106,7 +106,7 @@ input[type="text" i] {
 }
 
 input[type="text" i]:focus {
-    border-bottom-color: #d3394c;
+    border-bottom-color: #e60023;
 }
 
 input[type="file" i] {
@@ -120,7 +120,7 @@ input[type="file" i] {
 
 label,
 .btn-submit {
-    color: #d3394c;
+    color: #e60023;
     border: 1.5px solid currentColor;
     font-size: 15px;
     text-overflow: ellipsis;
@@ -135,17 +135,17 @@ label,
 }
 
 label:hover {
-    color: #722040;
+    color: #ad081b;
 }
 
 .btn-submit {
     color: #f1e5e6;
-    background-color: #d3394c;
+    background-color: #e60023;
     border: none;
 }
 
 .btn-submit:hover {
-    background-color: #722040;
+    background-color: #ad081b;
 }
 
 /* Plus button */
@@ -160,7 +160,7 @@ label:hover {
 }
 
 .btn-plus:hover {
-    color: #d3394c;
+    color: #e60023;
 }
 
 /* Cancel button */
