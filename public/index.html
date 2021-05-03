@@ -6,8 +6,12 @@
         <link rel="stylesheet" href="/style.css" />
     </head>
     <body>
-        <h1 class="text-center">MOOD BOARD</h1>
-        <div id="main" class="flex justify-center" style="width: 100vw">
+        <div
+            id="main"
+            class="flex flex-column justify-center align-center"
+            style="width: 100vw"
+        >
+            <h1 class="text-center">MOOD BOARD</h1>
             <div class="grid-container">
                 <div class="scene">
                     <div
@@ -88,6 +92,8 @@
                     </div>
                 </div>
             </div>
+            <!-- Large overlay -->
+            <div class="large-overlay" v-if="imageId" @click="closeModal"></div>
             <!-- Modal -->
             <modal-component
                 v-bind:image-id="imageId"
