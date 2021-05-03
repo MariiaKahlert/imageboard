@@ -1,4 +1,4 @@
-const { selectAllImages, insertImage } = require("./db");
+const { selectAllImages, selectImage, insertImage } = require("./db");
 const { upload } = require("./s3");
 const { s3Url } = require("./config.json");
 
@@ -33,10 +33,18 @@ const uploader = multer({
 
 // End of the code required to upload files
 
-app.use("/images", (req, res) => {
+app.get("/images", (req, res) => {
     selectAllImages()
         .then((result) => {
             res.json(result.rows);
+        })
+        .catch((err) => console.log(err));
+});
+
+app.get("/images/:imageId", (req, res) => {
+    selectImage(req.params.imageId)
+        .then((result) => {
+            res.json(result.rows[0]);
         })
         .catch((err) => console.log(err));
 });

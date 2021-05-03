@@ -10,6 +10,16 @@ module.exports.selectAllImages = () => {
     );
 };
 
+module.exports.selectImage = (imageId) => {
+    return db.query(
+        `
+            SELECT * FROM images
+            WHERE id = $1
+        `,
+        [imageId]
+    );
+};
+
 module.exports.insertImage = (title, description, username, url) => {
     return db.query(
         `

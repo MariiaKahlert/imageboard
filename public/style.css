@@ -30,6 +30,10 @@ body {
     justify-content: space-evenly;
 }
 
+.justify-between {
+    justify-content: space-between;
+}
+
 .align-center {
     align-items: center;
 }
@@ -56,6 +60,7 @@ body {
     top: 20vh;
     border-radius: 20px;
     border: 1px solid black;
+    overflow: hidden;
 }
 
 /* Form */

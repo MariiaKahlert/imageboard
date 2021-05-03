@@ -1,6 +1,28 @@
 (function () {
     Vue.component("modal-component", {
         template: "#modal-template",
+        props: ["imageId"],
+        data: function () {
+            return {
+                description: "",
+                username: "",
+                title: "",
+                created_at: "",
+                url: "",
+            };
+        },
+        mounted: function () {
+            axios
+                .get(`/images/${this.imageId}`)
+                .then((response) => {
+                    this.description = response.data.description;
+                    this.title = response.data.title;
+                    this.url = response.data.url;
+                    this.username = response.data.username;
+                    this.created_at = response.data.created_at;
+                })
+                .catch((err) => console.log(err));
+        },
         methods: {
             closeModal: function () {
                 this.$emit("close");
@@ -20,9 +42,12 @@
             imageId: null,
         },
         mounted: function () {
-            axios.get("/images").then((response) => {
-                this.images = response.data;
-            });
+            axios
+                .get("/images")
+                .then((response) => {
+                    this.images = response.data;
+                })
+                .catch((err) => console.log(err));
         },
         methods: {
             handleChange: function (e) {
