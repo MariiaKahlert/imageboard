@@ -89,6 +89,17 @@ body {
     z-index: 2;
 }
 
+/* Transition */
+
+.fade-enter-active,
+.fade-leave-active {
+    transition: opacity 0.2s;
+}
+.fade-enter,
+.fade-leave-to {
+    opacity: 0;
+}
+
 /* Form */
 
 form {

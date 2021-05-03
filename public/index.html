@@ -105,14 +105,22 @@
             </div>
 
             <!-- Large overlay -->
-            <div class="large-overlay" v-if="imageId" @click="closeModal"></div>
+            <transition name="fade">
+                <div
+                    class="large-overlay"
+                    v-if="imageId"
+                    @click="closeModal"
+                ></div>
+            </transition>
 
             <!-- Modal -->
-            <modal-component
-                v-bind:image-id="imageId"
-                v-if="imageId"
-                @close="closeModal"
-            ></modal-component>
+            <transition name="fade">
+                <modal-component
+                    v-bind:image-id="imageId"
+                    v-if="imageId"
+                    @close="closeModal"
+                ></modal-component>
+            </transition>
         </div>
         <script id="modal-template" type="text/x-template">
             <div class="flex modal-container">
