@@ -38,7 +38,9 @@
                         <div
                             class="card-face card-face-back flex flex-column align-center justify-center"
                         >
-                            <form class="flex flex-column justify-evenly">
+                            <form
+                                class="flex flex-column justify-evenly add-image-form"
+                            >
                                 <input
                                     v-model="title"
                                     type="text"
@@ -122,6 +124,8 @@
                 ></modal-component>
             </transition>
         </div>
+
+        <!-- Modal template -->
         <script id="modal-template" type="text/x-template">
             <div class="flex modal-container">
                 <div style="width: 50%">
@@ -129,7 +133,7 @@
                 </div>
                 <div style="width: 50%; position: relative;">
                     <span @click="closeModal" class="x-span">X</span>
-                    <div class="flex flex-column justify-between" style="padding: 50px 20px 15px; height: 100%">
+                    <div class="flex flex-column justify-between" style="padding: 50px 20px 15px; height: 100%; overflow: scroll">
                         <div>
                             <p v-if="username" style="margin-top: 0">Uploaded by <strong>{{ username }}</strong> <br/> <span style="color: #d2d2d2">{{ created_at }}</span></p>
                             <p v-else style="margin-top: 0; color: #d2d2d2">Uploaded on {{ created_at }}</p>
@@ -137,7 +141,22 @@
                             <p v-if="description">{{ description }}</p>
                         </div>
                         <div>
-                            <h3>Add a comment</h3>
+                            <h3>2 comments</h3>
+                            <div class="flex flex-column align-center justify-evenly comments-section">
+                                <div class="comment">
+                                    <h5>Miranda</h5>
+                                    <p>So beautiful!</p>
+                                </div>
+                                <div class="comment">
+                                    <h5>Nick</h5>
+                                    <p>This light 😍</p>
+                                </div>
+                            </div>
+                            <form class="flex justify-between comment-form">
+                                <input type="text" placeholder="Your username" style="width: 35%">
+                                <input type="text" placeholder="Add a comment" style="width: 45%">
+                                <button type="submit" class="btn-send">Send</button>
+                            </form>
                         </div>
                     </div>
 

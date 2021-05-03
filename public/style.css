@@ -100,9 +100,60 @@ body {
     opacity: 0;
 }
 
+/* Comments section */
+
+.comments-section {
+    height: 190px;
+    margin: 0 0 15px 0;
+    overflow-y: scroll;
+}
+
+.comment {
+    width: 70%;
+    border: 1.5px solid #d2d2d2;
+    border-radius: 15px;
+    padding: 10px;
+    margin: 5px 0;
+}
+
+.comment h5,
+p {
+    margin: 0;
+}
+
+.comment-form input[type="text" i] {
+    border: 1.5px solid #949494;
+    border-radius: 15px;
+    height: 40px;
+    padding: 10px;
+    width: 150px;
+}
+
+.comment-form input[type="text" i]:focus {
+    border-color: #949494;
+}
+
+.comment-form input[type="text" i]:focus::placeholder {
+    color: #d2d2d2;
+}
+
+.btn-send {
+    color: #f1e5e6;
+    background-color: #e60023;
+    border: none;
+    border-radius: 10px;
+    width: 15%;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+
+.btn-send:hover {
+    background-color: #ad081b;
+}
+
 /* Form */
 
-form {
+.add-image-form {
     height: 80%;
     width: 70%;
     max-width: 200px;
