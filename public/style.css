@@ -63,6 +63,20 @@ body {
     box-shadow: 0 4px 16px 0 rgb(0 0 0 / 60%);
 }
 
+.x-span {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    cursor: pointer;
+    color: #949494;
+    font-size: 20px;
+    transition-duration: 0.2s;
+}
+
+.x-span:hover {
+    color: #d3394c;
+}
+
 /* Large overlay */
 
 .large-overlay {
@@ -149,6 +163,20 @@ label:hover {
     color: #d3394c;
 }
 
+/* Cancel button */
+
+.btn-cancel {
+    background: none;
+    border: none;
+    color: #949494;
+    cursor: pointer;
+    transition-duration: 0.2s;
+}
+
+.btn-cancel:hover {
+    color: #d3394c;
+}
+
 /* Card */
 
 .card {
@@ -192,18 +220,6 @@ label:hover {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-}
-
-.btn-cancel {
-    background: none;
-    border: none;
-    color: #949494;
-    cursor: pointer;
-    transition-duration: 0.2s;
-}
-
-.btn-cancel:hover {
-    color: #d3394c;
 }
 
 /* Card flip */
