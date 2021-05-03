@@ -75,9 +75,11 @@
             },
             toggleImage: function (imageId) {
                 this.imageId = imageId;
+                document.body.style.overflow = "hidden";
             },
             closeModal: function () {
                 this.imageId = null;
+                document.body.style.overflow = null;
             },
         },
     });
