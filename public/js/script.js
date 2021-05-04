@@ -27,7 +27,6 @@
                         image_id: this.imageId,
                     })
                     .then((response) => {
-                        console.log(response);
                         this.comments.unshift(response.data);
                     })
                     .catch((err) => console.log(err));
