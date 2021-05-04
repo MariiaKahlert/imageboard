@@ -33,8 +33,7 @@ module.exports.upload = (req, res, next) => {
 
     promise
         .then(() => {
-            console.log("amazon upload complete");
-            // fs.unlink(path, () => {}); // deletes the image from the upload folder
+            // fs.unlink(path, () => {});
             next();
         })
         .catch((err) => {
