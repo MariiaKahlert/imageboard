@@ -15,16 +15,13 @@
                 .then((response) => {
                     this.comments = response.data;
                     if (this.comments.length > 0) {
-                        this.$nextTick(() => {
-                            this.$refs.commentsRef.scrollTop = this.$refs.commentsRef.scrollHeight;
-                        });
+                        this.scrollToBottom();
                     }
                 })
                 .catch((err) => console.log(err));
         },
         methods: {
             sendComment: function () {
-                console.log("Comment sent!");
                 axios
                     .post("/comment", {
                         username: this.username,
@@ -32,11 +29,17 @@
                         image_id: this.imageId,
                     })
                     .then((response) => {
-                        this.comments.unshift(response.data);
+                        this.comments.push(response.data);
                         this.username = "";
                         this.comment = "";
+                        this.scrollToBottom();
                     })
                     .catch((err) => console.log(err));
+            },
+            scrollToBottom: function () {
+                this.$nextTick(() => {
+                    this.$refs.commentsRef.scrollTop = this.$refs.commentsRef.scrollHeight;
+                });
             },
         },
     });
