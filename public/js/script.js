@@ -16,9 +16,6 @@
                     this.comments = response.data;
                     if (this.comments.length > 0) {
                         this.$nextTick(() => {
-                            // console.log(this.$refs.commentsRef.scrollTop);
-                            // console.log(this.$refs.commentsRef.scrollHeight);
-                            // console.log(this.$refs.commentsRef.clientHeight);
                             this.$refs.commentsRef.scrollTop = this.$refs.commentsRef.scrollHeight;
                         });
                     }
@@ -87,6 +84,7 @@
             file: null,
             showForm: false,
             imageId: null,
+            formErrorMessage: "",
         },
         mounted: function () {
             axios
@@ -109,10 +107,23 @@
                 .catch((err) => console.log(err));
         },
         methods: {
+            cancelForm: function () {
+                this.showForm = false;
+                this.formErrorMessage = "";
+                this.title = "";
+                this.description = "";
+                this.username = "";
+                this.file = null;
+            },
             handleChange: function (e) {
                 this.file = e.target.files[0];
             },
             submitFile: function () {
+                if (!this.title || !this.username || !this.file) {
+                    this.formErrorMessage =
+                        "Something went wrong. Please, try again.";
+                    return;
+                }
                 var formData = new FormData();
                 formData.append("file", this.file);
                 formData.append("title", this.title);
@@ -128,6 +139,7 @@
                         this.username = "";
                         this.title = "";
                         this.file = null;
+                        this.formErrorMessage = "";
                     })
                     .catch((err) => console.log(err));
             },

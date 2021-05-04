@@ -38,6 +38,9 @@
                         <div
                             class="card-face card-face-back flex flex-column align-center justify-center"
                         >
+                            <p v-if="formErrorMessage" class="error-message">
+                                <em>{{ formErrorMessage }}</em>
+                            </p>
                             <form
                                 class="flex flex-column justify-evenly add-image-form"
                             >
@@ -45,7 +48,7 @@
                                     v-model="title"
                                     type="text"
                                     name="title"
-                                    placeholder="title"
+                                    placeholder="title *"
                                 />
                                 <input
                                     v-model="description"
@@ -57,7 +60,7 @@
                                     v-model="username"
                                     type="text"
                                     name="username"
-                                    placeholder="username"
+                                    placeholder="username *"
                                 />
                                 <input
                                     @change="handleChange"
@@ -67,7 +70,8 @@
                                     accept="image/*"
                                 />
                                 <label for="file"
-                                    >{{ file?.name || "Choose a file" }}</label
+                                    >{{ file?.name || "Choose a file *"
+                                    }}</label
                                 >
                                 <button
                                     class="btn-submit"
@@ -80,7 +84,7 @@
                             <button
                                 class="btn-cancel"
                                 type="button"
-                                @click="showForm = false"
+                                @click="cancelForm"
                             >
                                 Cancel
                             </button>

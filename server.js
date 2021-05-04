@@ -76,6 +76,11 @@ app.post("/upload", uploader.single("file"), upload, (req, res) => {
         const { title, description, username } = req.body;
         const { filename } = req.file;
         const fullUrl = s3Url + filename;
+        if (!title || !username) {
+            return res.status(404).json({
+                error: "Title or username is an empty string",
+            });
+        }
         insertImage(title, description, username, fullUrl)
             .then((result) => {
                 res.json(result.rows[0]);

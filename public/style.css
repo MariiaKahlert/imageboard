@@ -214,6 +214,13 @@ label:hover {
     background-color: #ad081b;
 }
 
+.error-message {
+    max-width: 200px;
+    text-align: center;
+    font-size: 14px;
+    color: #e60023;
+}
+
 /* Plus button */
 
 .btn-plus {
