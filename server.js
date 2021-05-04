@@ -1,5 +1,6 @@
 const {
     selectAllImages,
+    selectMoreImages,
     selectImage,
     insertImage,
     selectComments,
@@ -58,6 +59,14 @@ app.get("/images/:imageId", (req, res) => {
     selectImage(req.params.imageId)
         .then((result) => {
             res.json(result.rows[0]);
+        })
+        .catch((err) => console.log(err));
+});
+
+app.get("/moreimages/:lowestId", (req, res) => {
+    selectMoreImages(req.params.lowestId)
+        .then((result) => {
+            res.json(result.rows);
         })
         .catch((err) => console.log(err));
 });

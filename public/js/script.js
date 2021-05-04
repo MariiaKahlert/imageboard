@@ -126,6 +126,18 @@
                 this.imageId = null;
                 document.body.style.overflow = null;
             },
+            loadImages: function () {
+                console.log("More button clicked!");
+                const lowestId = this.images[this.images.length - 1].id;
+                axios
+                    .get(`/moreimages/${lowestId}`)
+                    .then((response) => {
+                        for (let image in response.data) {
+                            this.images.push(response.data[image]);
+                        }
+                    })
+                    .catch((err) => console.log(err));
+            },
         },
     });
 })();

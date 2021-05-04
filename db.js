@@ -6,7 +6,20 @@ module.exports.selectAllImages = () => {
         `
             SELECT * FROM images
             ORDER BY created_at DESC
+            LIMIT 5
         `
+    );
+};
+
+module.exports.selectMoreImages = (lowestId) => {
+    return db.query(
+        `
+            SELECT * FROM images
+            WHERE id < $1
+            ORDER BY created_at DESC
+            LIMIT 3
+        `,
+        [lowestId]
     );
 };
 
