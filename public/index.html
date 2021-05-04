@@ -150,18 +150,14 @@
 
         <!-- Comments template -->
         <script id="comments-template" type="text/x-template">
-            <div class="flex flex-column" v-for="comment in comments" v-bind:key="image.id" style="overflow: hidden">
+            <div class="flex flex-column" style="overflow: hidden">
                 <h3>2 comments</h3>
                 <div class="comments-section">
                     <div class="flex flex-column align-center">
-                        <div class="comment">
+                        <div class="comment" v-for="comment in comments" v-bind:key="comment.id">
                             <h5>{{ comment.username }}</h5>
-                            <p>{{ comment.comment }}</p>
+                            <p>{{ comment.comment_text }}</p>
                         </div>
-                        <!-- <div class="comment">
-                            <h5>Nick</h5>
-                            <p>This light 😍</p>
-                        </div> -->
                     </div>
                 </div>
                 <form class="flex justify-between comment-form">

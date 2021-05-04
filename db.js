@@ -31,6 +31,16 @@ module.exports.insertImage = (title, description, username, url) => {
     );
 };
 
+module.exports.selectComments = (imageId) => {
+    return db.query(
+        `
+            SELECT * FROM comments
+            WHERE image_id = $1
+        `,
+        [imageId]
+    );
+};
+
 module.exports.insertComment = (username, commentText, imageId) => {
     return db.query(
         `

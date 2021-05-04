@@ -2,6 +2,7 @@ const {
     selectAllImages,
     selectImage,
     insertImage,
+    selectComments,
     insertComment,
 } = require("./db");
 const { upload } = require("./s3");
@@ -78,9 +79,12 @@ app.post("/upload", uploader.single("file"), upload, (req, res) => {
     }
 });
 
-app.get("/comments/:commentId", (req, res) => {
-    console.log(req.params);
-    // selectComments();
+app.get("/comments/:imageId", (req, res) => {
+    selectComments(req.params.imageId)
+        .then((result) => {
+            res.json(result.rows);
+        })
+        .catch((err) => console.log(err));
 });
 
 app.post("/comment", (req, res) => {

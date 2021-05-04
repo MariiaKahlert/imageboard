@@ -12,7 +12,9 @@
         mounted: function () {
             axios
                 .get(`/comments/${this.imageId}`)
-                .then()
+                .then((response) => {
+                    this.comments = response.data;
+                })
                 .catch((err) => console.log(err));
         },
         methods: {
