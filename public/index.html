@@ -150,32 +150,36 @@
 
         <!-- Comments template -->
         <script id="comments-template" type="text/x-template">
-            <div class="flex flex-column" style="overflow: hidden">
+            <div class="flex flex-column" v-for="comment in comments" v-bind:key="image.id" style="overflow: hidden">
                 <h3>2 comments</h3>
                 <div class="comments-section">
                     <div class="flex flex-column align-center">
                         <div class="comment">
-                            <h5>Miranda</h5>
-                            <p>So beautiful!</p>
+                            <h5>{{ comment.username }}</h5>
+                            <p>{{ comment.comment }}</p>
                         </div>
-                        <div class="comment">
+                        <!-- <div class="comment">
                             <h5>Nick</h5>
                             <p>This light 😍</p>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
                 <form class="flex justify-between comment-form">
                     <input
+                        v-model="username"
+                        name="username"
                         type="text"
                         placeholder="Your username"
                         style="width: 35%"
                     />
                     <input
+                        v-model="comment"
+                        name="comment"
                         type="text"
                         placeholder="Add a comment"
                         style="width: 45%"
                     />
-                    <button type="submit" class="btn-send">
+                    <button type="submit" class="btn-send" @click.prevent="sendComment">
                         Send
                     </button>
                 </form>

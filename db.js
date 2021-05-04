@@ -30,3 +30,14 @@ module.exports.insertImage = (title, description, username, url) => {
         [title, description, username, url]
     );
 };
+
+module.exports.insertComment = (username, commentText, imageId) => {
+    return db.query(
+        `
+            INSERT INTO comments (username, comment_text, image_id)
+            VALUES ($1, $2, $3)
+            RETURNING *
+        `,
+        [username, commentText, imageId]
+    );
+};

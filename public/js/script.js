@@ -2,6 +2,35 @@
     Vue.component("comments-component", {
         template: "#comments-template",
         props: ["imageId"],
+        data: function () {
+            return {
+                comments: [],
+                username: "",
+                comment: "",
+            };
+        },
+        mounted: function () {
+            axios
+                .get(`/comments/${this.imageId}`)
+                .then()
+                .catch((err) => console.log(err));
+        },
+        methods: {
+            sendComment: function () {
+                console.log("Comment sent!");
+                axios
+                    .post("/comment", {
+                        username: this.username,
+                        comment_text: this.comment,
+                        image_id: this.imageId,
+                    })
+                    .then((response) => {
+                        console.log(response);
+                        this.comments.unshift(response.data);
+                    })
+                    .catch((err) => console.log(err));
+            },
+        },
     });
 
     Vue.component("modal-component", {

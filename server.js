@@ -1,4 +1,9 @@
-const { selectAllImages, selectImage, insertImage } = require("./db");
+const {
+    selectAllImages,
+    selectImage,
+    insertImage,
+    insertComment,
+} = require("./db");
 const { upload } = require("./s3");
 const { s3Url } = require("./config.json");
 const multer = require("multer");
@@ -8,7 +13,15 @@ const path = require("path");
 const express = require("express");
 const app = express();
 
+// Middlewares
+
 app.use(express.static("public"));
+app.use(
+    express.urlencoded({
+        extended: false,
+    })
+);
+app.use(express.json());
 
 // Beginning of the code required to upload files
 
@@ -63,6 +76,20 @@ app.post("/upload", uploader.single("file"), upload, (req, res) => {
             success: false,
         });
     }
+});
+
+app.get("/comments/:commentId", (req, res) => {
+    console.log(req.params);
+    // selectComments();
+});
+
+app.post("/comment", (req, res) => {
+    const { username, comment_text: commentText, image_id: imageId } = req.body;
+    insertComment(username, commentText, imageId)
+        .then((result) => {
+            res.json(result.rows[0]);
+        })
+        .catch((err) => console.log(err));
 });
 
 app.listen(8080, () => console.log("Server listening on port 8080"));
