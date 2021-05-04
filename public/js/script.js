@@ -10,10 +10,17 @@
             };
         },
         mounted: function () {
+            // console.log(this.$refs);
             axios
                 .get(`/comments/${this.imageId}`)
                 .then((response) => {
                     this.comments = response.data;
+                    this.$nextTick(() => {
+                        console.log(this.$refs.commentsRef.scrollTop);
+                        console.log(this.$refs.commentsRef.scrollHeight);
+                        console.log(this.$refs.commentsRef.clientHeight);
+                        this.$refs.commentsRef.scrollTop = this.$refs.commentsRef.scrollHeight;
+                    });
                 })
                 .catch((err) => console.log(err));
         },

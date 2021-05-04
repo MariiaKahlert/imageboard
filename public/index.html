@@ -152,16 +152,16 @@
         <script id="comments-template" type="text/x-template">
             <div class="flex flex-column" style="overflow: hidden">
                 <h3 v-if="comments.length > 0">{{ comments.length }} comments</h3>
-                <h3 v-else>Comments</h3>
-                <div class="comments-section">
-                    <div class="flex flex-column align-center">
+                <h3 v-else>No comments yet</h3>
+                <!-- <div> -->
+                    <div class="comments-section flex flex-column align-center" ref="commentsRef">
                         <div class="comment" v-for="comment in comments" v-bind:key="comment.id">
                             <span style="color: #d2d2d2; font-size: 12px;">{{ new Date(comment.created_at).toUTCString().replace("GMT", "")}}</span>
                             <h4>{{ comment.username }}</h4>
                             <p>{{ comment.comment_text }}</p>
                         </div>
                     </div>
-                </div>
+                <!-- </div> -->
                 <form class="flex justify-between comment-form">
                     <input
                         v-model="username"
