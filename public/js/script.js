@@ -93,6 +93,18 @@
                 .get("/images")
                 .then((response) => {
                     this.images = response.data;
+                    this.$nextTick(() => {
+                        const checkScrollPos = () => {
+                            const scrolledToBottom =
+                                window.innerHeight + window.pageYOffset >=
+                                document.body.clientHeight - 150;
+                            if (scrolledToBottom) {
+                                this.loadImages();
+                            }
+                            setTimeout(checkScrollPos, 500);
+                        };
+                        checkScrollPos();
+                    });
                 })
                 .catch((err) => console.log(err));
         },
@@ -110,6 +122,7 @@
                     .post("/upload", formData)
                     .then((response) => {
                         this.images.unshift(response.data);
+                        this.images.splice(-1, 1);
                         this.showForm = false;
                         this.description = "";
                         this.username = "";
@@ -127,7 +140,6 @@
                 document.body.style.overflow = null;
             },
             loadImages: function () {
-                console.log("More button clicked!");
                 const lowestId = this.images[this.images.length - 1].id;
                 axios
                     .get(`/moreimages/${lowestId}`)
