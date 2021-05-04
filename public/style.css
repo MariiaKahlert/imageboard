@@ -103,7 +103,7 @@ body {
 /* Comments section */
 
 .comments-section {
-    height: 190px;
+    /* height: 190px; */
     margin: 0 0 15px 0;
     overflow-y: scroll;
 }
