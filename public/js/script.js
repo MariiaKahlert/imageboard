@@ -1,4 +1,9 @@
 (function () {
+    Vue.component("comments-component", {
+        template: "#comments-template",
+        props: ["imageId"],
+    });
+
     Vue.component("modal-component", {
         template: "#modal-template",
         props: ["imageId"],

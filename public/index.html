@@ -140,33 +140,48 @@
                             <h2 v-if="title">{{ title }}</h2>
                             <p v-if="description">{{ description }}</p>
                         </div>
-                        <!-- Comments -->
-                        <div class="flex flex-column" style="overflow: hidden">
-                            <h3>2 comments</h3>
-                            <div class="comments-section">
-                                <div class="flex flex-column align-center">
-                                    <div class="comment">
-                                        <h5>Miranda</h5>
-                                        <p>So beautiful!</p>
-                                    </div>
-                                    <div class="comment">
-                                        <h5>Nick</h5>
-                                        <p>This light 😍</p>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <form class="flex justify-between comment-form">
-                                <input type="text" placeholder="Your username" style="width: 35%">
-                                <input type="text" placeholder="Add a comment" style="width: 45%">
-                                <button type="submit" class="btn-send">Send</button>
-                            </form>
-                        </div>
+                        <comments-component
+                        v-bind:image-id="imageId">
+                        </comments-component>
                     </div>
-
                 </div>
             </div>
         </script>
+
+        <!-- Comments template -->
+        <script id="comments-template" type="text/x-template">
+            <div class="flex flex-column" style="overflow: hidden">
+                <h3>2 comments</h3>
+                <div class="comments-section">
+                    <div class="flex flex-column align-center">
+                        <div class="comment">
+                            <h5>Miranda</h5>
+                            <p>So beautiful!</p>
+                        </div>
+                        <div class="comment">
+                            <h5>Nick</h5>
+                            <p>This light 😍</p>
+                        </div>
+                    </div>
+                </div>
+                <form class="flex justify-between comment-form">
+                    <input
+                        type="text"
+                        placeholder="Your username"
+                        style="width: 35%"
+                    />
+                    <input
+                        type="text"
+                        placeholder="Add a comment"
+                        style="width: 45%"
+                    />
+                    <button type="submit" class="btn-send">
+                        Send
+                    </button>
+                </form>
+            </div>
+        </script>
+
         <script src="/js/vue.js"></script>
         <script src="/js/axios.min.js"></script>
         <script src="/js/script.js"></script>
