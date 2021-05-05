@@ -94,7 +94,7 @@
 
                 <!-- Image card -->
                 <div class="card" v-for="image in images" v-bind:key="image.id">
-                    <a v-bind:href="'#' + image.id">
+                    <a v-bind:href="`#${image.id}`">
                         <div
                             class="overlay flex align-center justify-center text-center"
                         >

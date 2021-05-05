@@ -13,7 +13,7 @@
             this.getComments();
         },
         watch: {
-            function() {
+            imageId: function () {
                 this.getComments();
             },
         },
@@ -68,7 +68,7 @@
             this.getImage();
         },
         watch: {
-            function() {
+            imageId: function () {
                 this.getImage();
             },
         },
@@ -128,10 +128,10 @@
                 })
                 .catch((err) => console.log(err));
             if (location.hash) {
-                this.imageId = location.hash.slice(1);
+                this.toggleImage(location.hash.slice(1));
             }
             addEventListener("hashchange", () => {
-                this.imageId = location.hash.slice(1);
+                this.toggleImage(location.hash.slice(1));
             });
         },
         methods: {
