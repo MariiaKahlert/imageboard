@@ -99,6 +99,9 @@
                             class="overlay flex align-center justify-center text-center"
                         >
                             <span>{{ image.description }}</span>
+                            <p v-if="image.numOfComments">
+                                {{ image.numOfComments }}
+                            </p>
                         </div>
                     </a>
 
@@ -172,6 +175,7 @@
         <script id="comments-template" type="text/x-template">
             <div class="flex flex-column" style="overflow: hidden; height: 65%">
                 <h3 v-if="comments.length > 0">{{ comments.length }} comments</h3>
+                <h3 v-else-if="comments.length === 1">{{ comments.length }} comment</h3>
                 <h3 v-else>Comments</h3>
                 <!-- <div> -->
                     <div v-if="comments.length > 0" class="comments-section flex flex-column align-center" ref="commentsRef">

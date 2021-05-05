@@ -5,6 +5,12 @@ module.exports.selectAllImages = () => {
     return db.query(
         `
             SELECT * FROM images
+            LEFT JOIN (
+                SELECT COUNT(id) AS "numOfComments", image_id
+                FROM comments
+                GROUP BY image_id
+            ) AS commentsPerImage
+            ON commentsPerImage.image_id = images.id
             ORDER BY created_at DESC
             LIMIT 5
         `
@@ -15,6 +21,12 @@ module.exports.selectMoreImages = (lowestId) => {
     return db.query(
         `
             SELECT * FROM images
+            LEFT JOIN (
+                SELECT COUNT(id) AS "numOfComments", image_id
+                FROM comments
+                GROUP BY image_id
+            ) AS commentsPerImage
+            ON commentsPerImage.image_id = images.id
             WHERE id < $1
             ORDER BY created_at DESC
             LIMIT 3
