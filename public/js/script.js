@@ -10,15 +10,12 @@
             };
         },
         mounted: function () {
-            axios
-                .get(`/comments/${this.imageId}`)
-                .then((response) => {
-                    this.comments = response.data;
-                    if (this.comments.length > 0) {
-                        this.scrollToBottom();
-                    }
-                })
-                .catch((err) => console.log(err));
+            this.getComments();
+        },
+        watch: {
+            function() {
+                this.getComments();
+            },
         },
         methods: {
             sendComment: function () {
@@ -33,6 +30,17 @@
                         this.username = "";
                         this.comment = "";
                         this.scrollToBottom();
+                    })
+                    .catch((err) => console.log(err));
+            },
+            getComments: function () {
+                axios
+                    .get(`/comments/${this.imageId}`)
+                    .then((response) => {
+                        this.comments = response.data;
+                        if (this.comments.length > 0) {
+                            this.scrollToBottom();
+                        }
                     })
                     .catch((err) => console.log(err));
             },
@@ -57,22 +65,33 @@
             };
         },
         mounted: function () {
-            axios
-                .get(`/images/${this.imageId}`)
-                .then((response) => {
-                    this.description = response.data.description;
-                    this.title = response.data.title;
-                    this.url = response.data.url;
-                    this.username = response.data.username;
-                    this.created_at = new Date(response.data.created_at)
-                        .toUTCString()
-                        .replace("GMT", "");
-                })
-                .catch((err) => console.log(err));
+            this.getImage();
+        },
+        watch: {
+            function() {
+                this.getImage();
+            },
         },
         methods: {
             closeModal: function () {
                 this.$emit("close");
+            },
+            getImage: function () {
+                axios
+                    .get(`/images/${this.imageId}`)
+                    .then((response) => {
+                        this.description = response.data.description;
+                        this.title = response.data.title;
+                        this.url = response.data.url;
+                        this.username = response.data.username;
+                        this.created_at = new Date(response.data.created_at)
+                            .toUTCString()
+                            .replace("GMT", "");
+                    })
+                    .catch((err) => {
+                        console.log(err);
+                        this.$emit("close");
+                    });
             },
         },
     });
@@ -108,6 +127,12 @@
                     });
                 })
                 .catch((err) => console.log(err));
+            if (location.hash) {
+                this.imageId = location.hash.slice(1);
+            }
+            addEventListener("hashchange", () => {
+                this.imageId = location.hash.slice(1);
+            });
         },
         methods: {
             cancelForm: function () {
@@ -152,6 +177,7 @@
             },
             closeModal: function () {
                 this.imageId = null;
+                history.pushState({}, "", "/");
                 document.body.style.overflow = null;
             },
             loadImages: function () {

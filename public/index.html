@@ -94,12 +94,14 @@
 
                 <!-- Image card -->
                 <div class="card" v-for="image in images" v-bind:key="image.id">
-                    <div
-                        @click="toggleImage(image.id)"
-                        class="overlay flex align-center justify-center text-center"
-                    >
-                        <span>{{ image.description }}</span>
-                    </div>
+                    <a v-bind:href="'#' + image.id">
+                        <div
+                            class="overlay flex align-center justify-center text-center"
+                        >
+                            <span>{{ image.description }}</span>
+                        </div>
+                    </a>
+
                     <img v-bind:src="image.url" alt="image" />
                     <div class="card-text flex flex-column justify-evenly">
                         <span style="font-weight: bold">{{ image.title }}</span>

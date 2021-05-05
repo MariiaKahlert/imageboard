@@ -58,7 +58,12 @@ app.get("/images", (req, res) => {
 app.get("/images/:imageId", (req, res) => {
     selectImage(req.params.imageId)
         .then((result) => {
-            res.json(result.rows[0]);
+            if (result.rows.length > 0) {
+                return res.json(result.rows[0]);
+            }
+            res.status(404).json({
+                error: "Image not found",
+            });
         })
         .catch((err) => console.log(err));
 });
