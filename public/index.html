@@ -133,25 +133,37 @@
 
         <!-- Modal template -->
         <script id="modal-template" type="text/x-template">
-            <div class="flex modal-container">
-                <div style="width: 50%">
-                    <img v-bind:src="url" alt="image" style="height: 100%; width: 100%; object-fit: cover">
+            <div class=" flex justify-evenly align-center modal-and-arrows">
+                <div style="width: 55px">
+                    <a v-if="nextId" v-bind:href="`#${nextId}`">
+                        <img src="./left-arrow.svg" alt="left-arrow" style="height: 50px">
+                    </a>
                 </div>
-                <div style="width: 50%; position: relative;">
-                    <span @click="closeModal" class="x-span">X</span>
-                    <div class="flex flex-column justify-between" style="padding: 50px 20px 15px; height: 100%; overflow-y: auto">
-                        <div style="height: 35%">
-                            <p v-if="username" style="margin-top: 0">Uploaded by <strong>{{ username }}</strong> <br/> <span style="color: #d2d2d2">{{ created_at }}</span></p>
-                            <p v-else style="margin-top: 0; color: #d2d2d2">Uploaded on {{ created_at }}</p>
-                            <h2 v-if="title">{{ title }}</h2>
-                            <div style="overflow-y: auto; height: 50px">
-                                <p v-if="description">{{ description }}</p>
-                            </div>
-                        </div>
-                        <comments-component
-                        v-bind:image-id="imageId">
-                        </comments-component>
+                <div class="flex modal-container">
+                    <div style="width: 50%">
+                        <img v-bind:src="url" alt="image" style="height: 100%; width: 100%; object-fit: cover">
                     </div>
+                    <div style="width: 50%; position: relative;">
+                        <span @click="closeModal" class="x-span">X</span>
+                        <div class="flex flex-column justify-between" style="padding: 50px 20px 15px; height: 100%; overflow-y: auto">
+                            <div style="height: 35%">
+                                <p v-if="username" style="margin-top: 0">Uploaded by <strong>{{ username }}</strong> <br/> <span style="color: #d2d2d2">{{ created_at }}</span></p>
+                                <p v-else style="margin-top: 0; color: #d2d2d2">Uploaded on {{ created_at }}</p>
+                                <h2 v-if="title">{{ title }}</h2>
+                                <div style="overflow-y: auto; height: 50px">
+                                    <p v-if="description">{{ description }}</p>
+                                </div>
+                            </div>
+                            <comments-component
+                            v-bind:image-id="imageId">
+                            </comments-component>
+                        </div>
+                    </div>
+                </div>
+                <div style="width: 55px">
+                    <a v-if="previousId" v-bind:href="`#${previousId}`">
+                        <img src="./right-arrow.svg" alt="right-arrow" style="height: 50px">
+                    </a>
                 </div>
             </div>
         </script>

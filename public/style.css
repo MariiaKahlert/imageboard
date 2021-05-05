@@ -51,13 +51,17 @@ body {
 
 /* Modal  */
 
+.modal-and-arrows {
+    top: 20vh;
+    width: 100vw;
+    position: fixed;
+    z-index: 3;
+}
+
 .modal-container {
     width: 820px;
-    position: fixed;
     height: 70vh;
-    z-index: 3;
     background-color: white;
-    top: 20vh;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 4px 16px 0 rgb(0 0 0 / 60%);

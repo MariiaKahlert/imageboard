@@ -62,6 +62,8 @@
                 title: "",
                 created_at: "",
                 url: "",
+                nextId: "",
+                previousId: "",
             };
         },
         mounted: function () {
@@ -84,6 +86,8 @@
                         this.title = response.data.title;
                         this.url = response.data.url;
                         this.username = response.data.username;
+                        this.nextId = response.data.nextId;
+                        this.previousId = response.data.previousId;
                         this.created_at = new Date(response.data.created_at)
                             .toUTCString()
                             .replace("GMT", "");
