@@ -96,12 +96,29 @@
                 <div class="card" v-for="image in images" v-bind:key="image.id">
                     <a v-bind:href="`#${image.id}`">
                         <div
-                            class="overlay flex align-center justify-center text-center"
+                            class="overlay flex flex-column align-center justify-center text-center"
                         >
-                            <span>{{ image.description }}</span>
-                            <p v-if="image.numOfComments">
-                                {{ image.numOfComments }}
-                            </p>
+                            <div class="flex align-end" style="height: 50%">
+                                <span>{{ image.description }}</span>
+                            </div>
+                            <div
+                                class="flex align-end justify-end comments-number"
+                                style="height: 50%; width: 100%"
+                            >
+                                <img
+                                    v-if="image.numOfComments"
+                                    src="./comment.svg"
+                                    alt="comment"
+                                    style="
+                                        height: 38px;
+                                        width: 38px;
+                                        position: absolute;
+                                    "
+                                />
+                                <p v-if="image.numOfComments">
+                                    {{ image.numOfComments }}
+                                </p>
+                            </div>
                         </div>
                     </a>
 

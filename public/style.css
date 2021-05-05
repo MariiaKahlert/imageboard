@@ -38,6 +38,14 @@ body {
     align-items: center;
 }
 
+.align-end {
+    align-items: flex-end;
+}
+
+.justify-end {
+    justify-content: flex-end;
+}
+
 /* Grid */
 
 .grid-container {
@@ -280,6 +288,13 @@ label:hover {
 
 .overlay:hover {
     opacity: 1;
+}
+
+.comments-number p {
+    position: absolute;
+    right: 36px;
+    bottom: 32px;
+    font-size: 15px;
 }
 
 .card img {
