@@ -194,7 +194,6 @@
                 <h3 v-if="comments.length === 1">{{ comments.length }} comment</h3>
                 <h3 v-else-if="comments.length > 0">{{ comments.length }} comments</h3>
                 <h3 v-else>Comments</h3>
-                <!-- <div> -->
                     <div v-if="comments.length > 0" class="comments-section flex flex-column align-center" ref="commentsRef">
                         <div class="comment" v-for="comment in comments" v-bind:key="comment.id">
                             <span style="color: #d2d2d2; font-size: 12px;">{{ new Date(comment.created_at).toUTCString().replace("GMT", "")}}</span>
@@ -205,7 +204,6 @@
                     <div v-else class="comments-section flex flex-column align-center justify-center">
                         <p style="color: #d2d2d2">Be the first to leave a comment</p>
                     </div>
-                <!-- </div> -->
                 <form class="flex justify-between comment-form">
                     <input
                         v-model="username"

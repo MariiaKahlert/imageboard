@@ -1,4 +1,6 @@
 (function () {
+    // Comments component
+
     Vue.component("comments-component", {
         template: "#comments-template",
         props: ["imageId"],
@@ -52,6 +54,8 @@
         },
     });
 
+    // Modal component
+
     Vue.component("modal-component", {
         template: "#modal-template",
         props: ["imageId"],
@@ -100,6 +104,8 @@
         },
     });
 
+    // Main Vue instance
+
     new Vue({
         el: "#main",
         data: {
@@ -132,10 +138,10 @@
                 })
                 .catch((err) => console.log(err));
             if (location.hash) {
-                this.toggleImage(location.hash.slice(1));
+                this.toggleImage(parseInt(location.hash.slice(1)));
             }
             addEventListener("hashchange", () => {
-                this.toggleImage(location.hash.slice(1));
+                this.toggleImage(parseInt(location.hash.slice(1)));
             });
         },
         methods: {
